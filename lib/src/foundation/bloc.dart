@@ -106,7 +106,7 @@ class Bloc {
 
     _steps = steps as List<String?>?;
     _stepsToIgnore = await _alreadyCompletedSteps;
-    _steps = _steps!.where((s) => !_stepsToIgnore!.contains(s)).toList();
+    _steps = _steps?.where((s) => !_stepsToIgnore!.contains(s)).toList();
     _activeStepIndex = -1;
 
     await _nextStep();
