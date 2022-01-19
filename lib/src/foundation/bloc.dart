@@ -100,13 +100,12 @@ class Bloc {
     _eventsController.close();
   }
 
-  void discoverFeatures(Iterable<String> steps) async {
+  void discoverFeatures(List<String> steps) async {
     assert(steps.isNotEmpty,
         'You need to pass at least one step to [FeatureDiscovery.discoverFeatures].');
 
-    _steps = steps as List<String?>?;
     _stepsToIgnore = await _alreadyCompletedSteps;
-    _steps = _steps?.where((s) => !_stepsToIgnore!.contains(s)).toList();
+    _steps = steps.where((s) => !_stepsToIgnore!.contains(s)).toList();
     _activeStepIndex = -1;
 
     await _nextStep();
